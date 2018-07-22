@@ -45,7 +45,7 @@ Once authenticated, you are presented with the Employees page where you can perf
 
 
 
-![employees](/Users/jkirby/Documents/Projects/spring-boot-demo/images/employees.png)
+![employees](/images/employees.png)
 
 
 

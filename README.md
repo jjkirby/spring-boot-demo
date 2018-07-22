@@ -21,7 +21,7 @@ Maven 3.x
 ### Building from source
 
 ```
-./mvn clean package
+mvn clean package
 ```
 
 ### Run the application

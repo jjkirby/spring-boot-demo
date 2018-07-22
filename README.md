@@ -35,7 +35,7 @@ http://localhost:8080/
 
 
 
-![login](/Users/jkirby/Documents/Projects/spring-boot-demo/images/login.png)
+![login](/images/login.png)
 
 For admin privileges (e.g. to delete an employee) user ***admin/admin*** credentials
 

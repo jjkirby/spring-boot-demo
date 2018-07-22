@@ -30,8 +30,10 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-Open browser to Login Page:  
+Open browser to Login Page: 
+
 http://localhost:8080/  
+
 
 
 

@@ -39,7 +39,7 @@ http://localhost:8080/
 
 ![login](/images/login.png)
 
-For admin privileges (e.g. to delete an employee) user ***admin/admin*** credentials
+For admin privileges (e.g. to delete an employee) use ***admin/admin*** credentials
 
 Non-admin privileges use ***user/user***
 

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet"  th:href="@{/ui/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  th:href="@{/ui/css/bootstrap-datepicker3.min.css}"/>
+    <script type="text/javascript" th:src="@{/ui/js/jquery-1.11.3.min.js}"></script>
+    <script type="text/javascript" th:src="@{/ui/js/bootstrap-datepicker.min.js}"></script>
+
+
+    <script>
+        $.fn.datepicker.defaults.format = 'yyyy-mm-dd';
+
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div>
+        <img th:src="@{/ui/images/iml-510x265.png}" height="65" width="125" alt="logo">
+        <div style="padding-top:10px">
+            <strong>Infinity Media Labs</strong>
+            <div style="padding-left: 10px;"><strong>Employee Portal</strong></div>
+        </div>
+    </div>
+    <h1>Edit Employee</h1>
+    <div class="col-md-4">
+        <form class="needs-validation" th:object="${employee}" th:action="@{../save}" action="#" method="post">
+            
+            <input type="hidden" th:field="*{id}" class="form-control"/>
+            <label>First Name:</label>
+            <input type="text" th:field="*{firstName}" class="form-control"
+                   placeholder="Firstname" required />
+
+
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label>Middle Initial:</label>
+            <input type="text" th:field="*{middleInitial}" class="form-control"
+                   placeholder="Middleinitial"  />
+
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label>Last Name:</label>
+            <input type="text" th:field="*{lastName}" class="form-control"
+                   placeholder="Lastname" required />
+            <div style="clear: both; display: block; height: 10px;"></div>
+
+            <label>Date of Birth:</label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" th:field ="*{dateOfBirth}"  required class="form-control">
+               <!--<input type="datetime-local" th:field="*{dateOfBirth}"  required class="form-control"> -->
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label>Start Date:</label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" th:field="*{dateOfEmployment}" required class="form-control">
+                <div class="input-group-addon">
+                    <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label>Status:</label>
+            <input type="text" th:field="*{status}" class="form-control"
+                   placeholder="Status" readonly />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <td>
+                <input type="submit" class="btn btn-primary" value="Save"></input>
+                <a href="/ui/employees" id="cancel" name="cancel" class="btn btn-danger">Cancel</a>
+            </td>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

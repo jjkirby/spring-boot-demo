@@ -1,0 +1,167 @@
+swagger: '2.0'
+info:
+  description: This is a simple Employee API
+  version: 1.0.0
+  title: Simple Employee API
+  # put the contact info for your development or API team
+  contact:
+    email: jjkirby@mac.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Employee APIs
+  description: Performs GET/POST/PUT/DELETE Actions for Employees
+paths:
+  /employee:
+    get:
+      tags:
+      - Employee APIs
+      summary: fetches all employees
+      operationId: searchAllEmployees
+      description: |
+        Fetches all available employees in the system
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Employee'
+    post:
+      tags:
+      - Employee APIs
+      summary: adds an employee
+      operationId: addEmployee
+      description: Adds an employee to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: employee
+        description: New employee to add
+        schema:
+          $ref: '#/definitions/Employee'
+      responses:
+        201:
+          description: employee record created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing employee already exists
+  /employee/{employeeId}:
+    get:
+      tags:
+      - Employee APIs
+      summary: fetches by employee id
+      operationId: getEmployeeId
+      description: 
+        By passing in theEmployee Id, you can fetch the specific
+        employee record
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: employeeId
+        required: true
+        description: pass an optional employee ID string for looking up employee
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: string
+            items:
+              $ref: '#/definitions/Employee'
+        400:
+          description: bad input parameter
+        404:
+          description: employee not found
+    put:
+      tags:
+      - Employee APIs
+      summary: updates an employee
+      description: This can only be done by the logged in user.
+      operationId: updateEmployee
+      produces:
+      - application/json
+      parameters:
+      - name: employeeId
+        in: path
+        description: employee that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated employee object
+        required: true
+        schema:
+          $ref: '#/definitions/Employee'
+      responses:
+        400:
+          description: invalid employee id supplied
+        404:
+          description: employee not found
+    delete:
+      tags:
+       - Employee APIs
+      summary: deletes an employee
+      operationId: deleteEmployee
+      produces:
+      - application/json
+      parameters:
+      - name: employeeId
+        in: path
+        description: Employee id to delete
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid Employee ID supplied
+        404:
+          description: Employee not found
+definitions:
+  Employee:
+    required: 
+      - firstName
+      - lastName
+      - dateOfBirth
+      - dateOfEmployment
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: 0
+      firstName:
+        type: string
+        example: John
+      middleInitial:
+        type: string
+        maxLength: 1 
+      lastName:
+        type: string
+        example: Smith
+      dateOfBirth:
+        type: string
+        format: date
+        example: 1985-06-21
+      dateOfEmployment:
+        type: string
+        format: date
+        example: 2016-06-23
+      status:
+        type: string
+        pattern: \bACTIVE\b|\bINACTIVE\b
+        example: ACTIVE
+# Added by API Auto Mocking Plugin
+host: localhost
+basePath: /
+schemes:
+ - http
